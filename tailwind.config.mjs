@@ -8,6 +8,9 @@ export default {
   theme: {
     extend: {
       colors: {
+        button: "#DB4444",
+        button1: "#00FF66",
+        button2: "#000000",
         primary: "#5F2EEA",
         secondary: "#1CC8EE",
         error: "#ED2E7E",
