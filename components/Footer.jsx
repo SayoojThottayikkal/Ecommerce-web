@@ -2,13 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import AppStore from "../public/images/footer/AppStore.png";
 import GooglePlay from "../public/images/footer/GooglePlay.png";
-import iconinstagram from "../public/images/footer/icon-instagram.png";
-import iconsend from "../public/images/footer/icon-send.png";
 import QrCode from "../public/images/footer/Qr Code.png";
-import Vector from "../public/images/footer/Vector (8).png";
-import Vector1 from "../public/images/footer/Vector (9).png";
-import Vector2 from "../public/images/footer/Vector.png";
 import { Input } from "./Input";
+
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  SendHorizontal,
+  Twitter,
+} from "lucide-react";
 
 export default function Footer() {
   return (
@@ -25,7 +28,7 @@ export default function Footer() {
               className="bg-transparent border-none text-sm px-3 py-2 focus:outline-none w-full"
             />
             <button className="  px-4 text-white transition-all">
-              <Image src={iconsend} alt="iconsend" width={30} height={30} />
+              <SendHorizontal color="#fafafa" strokeWidth={1.25} />
             </button>
           </div>
         </div>
@@ -93,35 +96,11 @@ export default function Footer() {
             </div>
           </div>
           <div className="flex space-x-4 text-white mt-4">
-            <Image
-              src={Vector2}
-              alt="Facebook"
-              width={10}
-              height={20}
-              className="cursor-pointer hover:text-gray-400"
-            />
+            <Facebook color="#fafafa" strokeWidth={1.25} />
 
-            <Image
-              src={Vector}
-              alt="FaTwitter"
-              width={10}
-              height={20}
-              className="cursor-pointer hover:text-gray-400"
-            />
-            <Image
-              src={iconinstagram}
-              alt="FaInstagram "
-              width={10}
-              height={20}
-              className="cursor-pointer hover:text-gray-400"
-            />
-            <Image
-              src={Vector1}
-              alt="FaLinkedinIn  "
-              width={10}
-              height={20}
-              className="cursor-pointer hover:text-gray-400"
-            />
+            <Twitter color="#fafafa" strokeWidth={1.25} />
+            <Instagram color="#fafafa" strokeWidth={1.25} />
+            <Linkedin color="#fafafa" strokeWidth={1.25} />
           </div>
         </div>
       </div>

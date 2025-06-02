@@ -20,7 +20,7 @@ export function Input({
         name={name}
         type={type}
         placeholder={placeholder}
-        className={`bg-gray-100 border border-gray-300 text-sm text-gray-800 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent ${className}`}
+        className={`bg-gray-100 border border-gray-300 text-sm text-white rounded-md px-4 py-2 focus:outline-none focus:border-transparent ${className}`}
         required={required}
         {...props}
       />
