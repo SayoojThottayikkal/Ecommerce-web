@@ -1,14 +1,13 @@
 import axios from "axios";
+
 const BASE_URL = "https://fakestoreapi.com/";
 
-export const getCategories = () => {
-  axios
-    .get(BASE_URL + "")
-    .then((response) => {
-      return response.data;
-    })
-    .catch((error) => {
-      console.log("error fetching categories", error);
-      throw error;
-    });
+export const getCategories = async () => {
+  try {
+    const response = await axios.get(BASE_URL + "products/categories");
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching categories:", error);
+    throw error;
+  }
 };

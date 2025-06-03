@@ -2,7 +2,10 @@ import { Inter, Poppins } from "next/font/google";
 import "../styles/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import SectionHeader from "@/components/SectionHeader";
+import Home from "../pages/Home";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,7 +27,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.variable} ${poppins.variable} antialiased`}>
         <Navbar />
-
+        <Home />
         {children}
         <Footer />
       </body>
