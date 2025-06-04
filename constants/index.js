@@ -11,12 +11,12 @@ export const navBars = [
   },
   {
     id: 1,
-    route: "/home",
-    title: "Home",
+    route: "/about",
+    title: "About",
   },
   {
     id: 1,
-    route: "/home",
-    title: "Home",
+    route: "/SignUp",
+    title: "Sign Up",
   },
 ];

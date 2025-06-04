@@ -11,7 +11,7 @@ import iphone from "../public/images/iphone.png";
 import iphone1 from "../public/images/iphone1.jpg";
 import iphone2 from "../public/images/iphone2.jpg";
 import iphonelogo from "../public/images/iphonelog.png";
-import { getCategories } from "../public/services/index";
+import { getCategories } from "../public/services/productService";
 
 const bannerSlides = [
   {
@@ -49,6 +49,7 @@ const Home = () => {
 
     fetchCategories();
   }, []);
+  console.log(categories, "cat");
 
   return (
     <div className="flex flex-col md:flex-row px-4 py-4 bg-white gap-4">
