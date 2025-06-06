@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import FlashSalesSlider from "@/pages/FlashSalesSlider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.variable} ${poppins.variable} antialiased`}>
         <Navbar />
         <Home />
+        <FlashSalesSlider />
         {children}
         <Footer />
       </body>

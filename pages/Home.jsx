@@ -17,7 +17,7 @@ const bannerSlides = [
   {
     img: iphone,
     icon: iphonelogo,
-    title: " iPhone 14 Series",
+    title: "iPhone 14 Series",
     subtitle: "Up to 10% off Voucher",
   },
   {
@@ -28,7 +28,7 @@ const bannerSlides = [
   },
   {
     img: iphone2,
-
+    icon: null,
     title: "Upgrade Now",
     subtitle: "Special Exchange Offer",
   },
@@ -49,15 +49,14 @@ const Home = () => {
 
     fetchCategories();
   }, []);
-  console.log(categories, "cat");
 
   return (
     <div className="flex flex-col md:flex-row px-4 py-4 bg-white gap-4">
       <aside className="md:w-1/5 w-full bg-white border-r border-gray-200 p-4 md:p-6">
         <ul className="space-y-4">
-          {categories.map((cat, index) => (
+          {categories.map((cat) => (
             <li
-              key={index}
+              key={cat}
               className="cursor-pointer hover:text-red-600 capitalize text-gray-700"
             >
               {cat}
@@ -79,13 +78,20 @@ const Home = () => {
                 <div className="bg-black text-white flex flex-col md:flex-row items-center justify-between p-6 md:p-10 h-full">
                   <div>
                     <p className="text-sm mb-2 flex items-center gap-2">
-                      <Image src={slide.icon} width={20} height={20} />
-                      {slide.title}
+                      {slide.icon && (
+                        <Image
+                          src={slide.icon}
+                          alt={slide.title}
+                          width={20}
+                          height={20}
+                        />
+                      )}
+                      <span>{slide.title}</span>
                     </p>
                     <h1 className="text-2xl md:text-4xl font-bold mb-4">
                       {slide.subtitle}
                     </h1>
-                    <button className=" underline  px-4 py-2 rounded hover:bg-white hover:text-black transition">
+                    <button className="underline px-4 py-2 rounded hover:bg-white hover:text-black transition">
                       Shop Now →
                     </button>
                   </div>

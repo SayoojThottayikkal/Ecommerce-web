@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SectionHeader({ icon, label, heading }) {
+export default function SectionHeader({ icon, label, heading, option }) {
   return (
     <div className="space-y-2">
       <div className="flex items-center space-x-2">
@@ -8,7 +8,10 @@ export default function SectionHeader({ icon, label, heading }) {
 
         <span className="text-red-500 text-sm font-semibold">{label}</span>
       </div>
-      <h1 className="text-2xl font-semibold">{heading}</h1>
+      <div className="flex flex-col items-center md:flex-row md:justify-start gap-3">
+        <h1 className="text-2xl font-bold text-black">{heading}</h1>
+        <h1 className="text-2xl font-bold text-black">{option}</h1>
+      </div>
     </div>
   );
 }
