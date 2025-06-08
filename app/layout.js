@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 import FlashSalesSlider from "@/pages/FlashSalesSlider";
 import CategorySection from "@/pages/CategorySection";
 import BestSelling from "@/pages/BestSelling";
+import ProductSection from "@/pages/ProductSection";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
         <FlashSalesSlider />
         <CategorySection />
         <BestSelling />
+        <ProductSection />
         {children}
         <Footer />
       </body>
