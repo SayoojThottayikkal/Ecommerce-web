@@ -10,6 +10,7 @@ import FlashSalesSlider from "@/pages/FlashSalesSlider";
 import CategorySection from "@/pages/CategorySection";
 import BestSelling from "@/pages/BestSelling";
 import ProductSection from "@/pages/ProductSection";
+import NewArrivalSection from "@/pages/NewArrivalSection";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
         <CategorySection />
         <BestSelling />
         <ProductSection />
+        <NewArrivalSection />
         {children}
         <Footer />
       </body>

@@ -58,3 +58,24 @@ export const Category = [
     title: "Gaming",
   },
 ];
+import arrival from "../public/images/Arrival/arrival2.png";
+import arrival1 from "../public/images/Arrival/arrival3.png";
+import arrival2 from "../public/images/Arrival/arrival4.png";
+
+export const Arrival = [
+  {
+    title: "Women’s Collections",
+    description: "Featured women collections that give you another vibe.",
+    image: arrival,
+  },
+  {
+    title: "Speakers",
+    description: "Amazon wireless speakers.",
+    image: arrival1,
+  },
+  {
+    title: "Perfume",
+    description: "GUCCI INTENSE OUD EDP",
+    image: arrival2,
+  },
+];
