@@ -43,7 +43,7 @@ function ProductSection() {
             key={item.id || index}
             image={item.image}
             title={item.title}
-            price={`$${item.price}`}
+            price={`${item.price}`}
             discount={Math.floor(Math.random() * 40) + 10}
             rating={item.rating?.rate || 4}
             category={item.category}

@@ -105,10 +105,10 @@ export default function FlashSalesSlider() {
                 <ProductCard
                   image={item.image}
                   title={item.title}
-                  price={`$${item.price}`}
+                  price={`${item.price}`}
                   discount={Math.floor(Math.random() * 40) + 10}
                   rating={item.rating?.rate || 4}
-                  category={`$${(item.price + 30).toFixed(2)}`}
+                  category={`${(item.price + 30).toFixed(2)}`}
                 />
               </SwiperSlide>
             ))}
