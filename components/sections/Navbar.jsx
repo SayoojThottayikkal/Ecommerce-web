@@ -1,14 +1,18 @@
 import Link from "next/link";
-import { navBars } from "../constants/index";
+import { navBars } from "../../constants/index";
 
-import { Input } from "./Input";
+import { Input } from "../ui/Input";
 import { Heart, Search, ShoppingCart } from "lucide-react";
+import AccountMenu from "../ui/AccountMenu";
 
 export default function Navbar() {
+  // This state should replace after the authentication is implemented
+  const isAuthenticated = true; // Placeholder for authentication state
   return (
     <nav className="bg-white px-6 md:px-10 py-4 shadow flex justify-between items-center">
-      <h1 className="text-black font-bold text-xl">Exclusive</h1>
-
+      <Link href="/" className="">
+        <h1 className="text-black font-bold text-xl">Exclusive</h1>
+      </Link>
       <div className="hidden md:flex space-x-8 text-sm font-medium text-gray-700">
         {navBars.map((item, index) => (
           <Link key={index} href={item.route} className="hover:text-black">
@@ -16,7 +20,6 @@ export default function Navbar() {
           </Link>
         ))}
       </div>
-
       <div className="flex items-center space-x-4">
         <div className="relative hidden sm:block">
           <Input
@@ -32,6 +35,7 @@ export default function Navbar() {
         <div className="flex items-center space-x-3">
           <Heart color="#080808" strokeWidth={2} />
           <ShoppingCart color="#080808" strokeWidth={2} />
+          {isAuthenticated && <AccountMenu />}
         </div>
       </div>
     </nav>

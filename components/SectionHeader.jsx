@@ -10,7 +10,6 @@ export default function SectionHeader({ icon, label, heading, option }) {
       </div>
       <div className="flex flex-col items-center md:flex-row md:justify-start gap-3">
         <h1 className="text-2xl font-bold text-black">{heading}</h1>
-        <h1 className="text-2xl font-bold text-black">{option}</h1>
       </div>
     </div>
   );

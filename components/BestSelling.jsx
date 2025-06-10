@@ -1,5 +1,5 @@
 "use client";
-import Button from "@/components/Button";
+import Button from "@/components/ui/Button";
 
 import ProductCard from "@/components/ProductCard";
 import SectionHeader from "@/components/SectionHeader";
@@ -24,7 +24,6 @@ function BestSelling() {
 
     fetchProducts();
   }, []);
-  console.log(products, "pro");
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -65,7 +64,7 @@ function BestSelling() {
             <ProductCard
               image={item.image}
               title={item.title}
-              price={`$${item.price}`}
+              price={item.price}
               discount={Math.floor(Math.random() * 40) + 10}
               rating={item.rating?.rate || 4}
               category={`$${(item.price + 30).toFixed(2)}`}
