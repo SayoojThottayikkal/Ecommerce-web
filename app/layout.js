@@ -1,16 +1,11 @@
 import { Inter, Poppins } from "next/font/google";
 import "../styles/globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import Home from "../pages/Home";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import FlashSalesSlider from "@/pages/FlashSalesSlider";
-import CategorySection from "@/pages/CategorySection";
-import BestSelling from "@/pages/BestSelling";
-import ProductSection from "@/pages/ProductSection";
-import NewArrivalSection from "@/pages/NewArrivalSection";
+
+import Navbar from "@/sections/Navbar";
+import Footer from "@/sections/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,12 +27,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.variable} ${poppins.variable} antialiased`}>
         <Navbar />
-        <Home />
-        <FlashSalesSlider />
-        <CategorySection />
-        <BestSelling />
-        <ProductSection />
-        <NewArrivalSection />
         {children}
         <Footer />
       </body>

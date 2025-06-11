@@ -1,10 +1,25 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
 import { navBars } from "../constants/index";
 
-import { Input } from "./Input";
 import { Heart, Search, ShoppingCart } from "lucide-react";
+import { Input } from "@/ui/Input";
+
+const AccountMenu = dynamic(() => import("../ui/AccountMenu"), { ssr: false });
 
 export default function Navbar() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const isAuthenticated = true;
+
   return (
     <nav className="bg-white px-6 md:px-10 py-4 shadow flex justify-between items-center">
       <h1 className="text-black font-bold text-xl">Exclusive</h1>
@@ -32,6 +47,7 @@ export default function Navbar() {
         <div className="flex items-center space-x-3">
           <Heart color="#080808" strokeWidth={2} />
           <ShoppingCart color="#080808" strokeWidth={2} />
+          {isMounted && isAuthenticated && <AccountMenu />}
         </div>
       </div>
     </nav>

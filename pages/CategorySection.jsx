@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Category } from "../constants/index";
-import Button from "@/components/Button";
+import Button from "@/ui/Button";
 import SectionHeader from "@/components/SectionHeader";
 import Image from "next/image";
 

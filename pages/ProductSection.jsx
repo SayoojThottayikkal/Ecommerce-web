@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { getAllProducts } from "@/public/services/productService";
 import ProductCard from "@/components/ProductCard";
 import SectionHeader from "@/components/SectionHeader";
-import Button from "@/components/Button";
+import Button from "@/ui/Button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 function ProductSection() {
@@ -43,9 +43,10 @@ function ProductSection() {
             key={item.id || index}
             image={item.image}
             title={item.title}
-            price={`${item.price}`}
+            price={item.price}
             discount={Math.floor(Math.random() * 40) + 10}
             rating={item.rating?.rate || 4}
+            count={item.rating?.count}
             category={item.category}
             isNew={index % 3 === 0}
           />
