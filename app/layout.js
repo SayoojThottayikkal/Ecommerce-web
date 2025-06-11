@@ -3,9 +3,8 @@ import "../styles/globals.css";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-import Navbar from "@/sections/Navbar";
-import Footer from "@/sections/Footer";
+import Navbar from "@/components/sections/Navbar";
+import Footer from "@/components/sections/Footer";
 
 const inter = Inter({
   subsets: ["latin"],

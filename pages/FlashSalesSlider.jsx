@@ -9,9 +9,10 @@ import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import ProductCard from "../components/ProductCard";
 import SectionHeader from "../components/SectionHeader";
-import Button from "../ui/Button";
+
 import { getAllProducts } from "@/public/services/productService";
-import CountdownTimer from "../ui/CountdownTimer";
+import Button from "@/components/ui/Button";
+import CountdownTimer from "@/components/ui/CountdownTimer";
 
 export default function FlashSalesSlider() {
   const [products, setProducts] = useState([]);
@@ -69,7 +70,7 @@ export default function FlashSalesSlider() {
                   image={item.image}
                   title={item.title}
                   price={item.price}
-                  discount={Math.floor(Math.random() * 40) + 10}
+                  discount={item.discount}
                   rating={item.rating?.rate || 4}
                   category={`${(item.price + 30).toFixed(2)}`}
                 />

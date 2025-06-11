@@ -2,14 +2,17 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Button from "@/ui/Button";
+
 import ProductCard from "@/components/ProductCard";
 import SectionHeader from "@/components/SectionHeader";
-import { getProductById } from "@/public/services/productService";
+import { getAllProducts } from "@/public/services/productService";
+
+import Button from "@/components/ui/Button";
 
 function BestSelling() {
   const [products, setProducts] = useState([]);
-  const [discounts, setDiscounts] = useState([]);
+  const [showAll, setShowAll] = useState(false);
+
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -20,15 +23,8 @@ function BestSelling() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const ids = [1, 2, 3, 4];
-        const productPromises = ids.map((id) => getProductById(id));
-        const results = await Promise.all(productPromises);
-        setProducts(results);
-
-        const generatedDiscounts = results.map(
-          () => Math.floor(Math.random() * 40) + 10
-        );
-        setDiscounts(generatedDiscounts);
+        const data = await getAllProducts();
+        setProducts(data);
       } catch (err) {
         console.error("Fetch Error:", err);
       }
@@ -62,17 +58,19 @@ function BestSelling() {
     <section className="my-10 px-4 md:px-10">
       <div className="flex justify-between items-center">
         <SectionHeader heading="Best Selling Products" label="This Month" />
-        <Button>View All</Button>
+        <Button onClick={() => setShowAll(!showAll)} className="ml-auto">
+          {showAll ? "Show Less" : "View All"}
+        </Button>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6">
-        {products.map((item, index) => (
+        {(showAll ? products : products.slice(0, 4)).map((item, index) => (
           <ProductCard
             key={item.id || index}
             image={item.image}
             title={item.title}
             price={item.price}
-            discount={discounts[index] || 0}
+            discount={item.discount}
             rating={item.rating?.rate || 4}
             category={`${(item.price + 30).toFixed(2)}`}
           />

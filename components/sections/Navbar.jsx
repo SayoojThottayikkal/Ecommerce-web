@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
-import { navBars } from "../constants/index";
+import { navBars } from "../../constants/index";
 
 import { Heart, Search, ShoppingCart } from "lucide-react";
-import { Input } from "@/ui/Input";
+import { Input } from "../ui/Input";
 
 const AccountMenu = dynamic(() => import("../ui/AccountMenu"), { ssr: false });
 

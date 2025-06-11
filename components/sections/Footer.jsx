@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import AppStore from "../public/images/footer/AppStore.png";
-import GooglePlay from "../public/images/footer/GooglePlay.png";
-import QrCode from "../public/images/footer/Qr Code.png";
+import AppStore from "../../public/images/footer/AppStore.png";
+import GooglePlay from "../../public/images/footer/GooglePlay.png";
+import QrCode from "../../public/images/footer/Qr Code.png";
 
 import {
   Facebook,
@@ -11,7 +11,7 @@ import {
   SendHorizontal,
   Twitter,
 } from "lucide-react";
-import { Input } from "@/ui/Input";
+import { Input } from "../ui/Input";
 
 export default function Footer() {
   return (

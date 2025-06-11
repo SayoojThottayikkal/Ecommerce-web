@@ -1,8 +1,9 @@
+import { generateDiscount } from "@/utils";
 import apiClient from "./apiClient";
 
 export const getAllProducts = async () => {
   const response = await apiClient.get("products");
-  return response.data;
+  return generateDiscount(response.data);
 };
 
 export const getProductById = async (id) => {

@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import { getAllProducts } from "@/public/services/productService";
 import ProductCard from "@/components/ProductCard";
 import SectionHeader from "@/components/SectionHeader";
-import Button from "@/ui/Button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import Button from "@/components/ui/Button";
 
 function ProductSection() {
   const [products, setProducts] = useState([]);
@@ -44,7 +44,7 @@ function ProductSection() {
             image={item.image}
             title={item.title}
             price={item.price}
-            discount={Math.floor(Math.random() * 40) + 10}
+            discount={item.discount}
             rating={item.rating?.rate || 4}
             count={item.rating?.count}
             category={item.category}
