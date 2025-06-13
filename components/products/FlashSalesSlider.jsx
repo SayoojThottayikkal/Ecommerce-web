@@ -7,12 +7,12 @@ import { Navigation } from "swiper/modules";
 
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import ProductCard from "../components/ProductCard";
-import SectionHeader from "../components/SectionHeader";
 
-import { getAllProducts } from "@/public/services/productService";
+import { getAllProducts } from "@/services/productService";
 import Button from "@/components/ui/Button";
 import CountdownTimer from "@/components/ui/CountdownTimer";
+import SectionHeader from "../SectionHeader";
+import ProductCard from "./ProductCard";
 
 export default function FlashSalesSlider() {
   const [products, setProducts] = useState([]);

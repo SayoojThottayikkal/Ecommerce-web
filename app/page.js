@@ -1,19 +1,9 @@
-import BestSelling from "@/pages/BestSelling";
-import CategorySection from "@/pages/CategorySection";
-import FlashSalesSlider from "@/pages/FlashSalesSlider";
-import Home from "@/pages/Home";
-import NewArrivalSection from "@/pages/NewArrivalSection";
-import ProductSection from "@/pages/ProductSection";
+import AuthPage from "./auth/page";
 
-export default function HomePage() {
+export default function Home() {
   return (
     <>
-      <Home />
-      <FlashSalesSlider />
-      <CategorySection />
-      <BestSelling />
-      <ProductSection />
-      <NewArrivalSection />
+      <AuthPage />
     </>
   );
 }

@@ -16,10 +16,6 @@ export default {
         error: "#ED2E7E",
         success: "#00BA88",
         warning: "#F4B740",
-        gradientPrimary: "linear-gradient(114.44deg, #7433FF 0%, #FFA3FD 100%)",
-        gradientSecondary:
-          "linear-gradient(114.44deg, #624AF2 0%, #50DDC3 100%)",
-        gradientAccent: "linear-gradient(114.44deg, #EB0055 0%, #FFFA80 100%)",
       },
       fontFamily: {
         inter: ["var(--font-inter)"],

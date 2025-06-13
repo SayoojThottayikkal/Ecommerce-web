@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { getAllProducts } from "@/public/services/productService";
-import ProductCard from "@/components/ProductCard";
+import { getAllProducts } from "@/services/productService";
+import ProductCard from "@/components/products/ProductCard";
 import SectionHeader from "@/components/SectionHeader";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Button from "@/components/ui/Button";

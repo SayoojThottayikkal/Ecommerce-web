@@ -4,7 +4,7 @@ import React from "react";
 import SectionHeader from "@/components/SectionHeader";
 import Image from "next/image";
 import { Truck, Headphones, ShieldCheck } from "lucide-react";
-import arrival from "../public/images/Arrival/arrival1.png";
+import arrival from "../../public/images/Arrival/arrival1.png";
 import { Arrival } from "@/constants";
 
 function NewArrivalSection() {

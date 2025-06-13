@@ -7,11 +7,11 @@ import { Pagination } from "swiper/modules";
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import iphone from "../public/images/iphone.png";
-import iphone1 from "../public/images/iphone1.jpg";
-import iphone2 from "../public/images/iphone2.jpg";
-import iphonelogo from "../public/images/iphonelog.png";
-import { getCategories } from "../public/services/productService";
+import iphone from "../../public/images/iphone.png";
+import iphone1 from "../../public/images/iphone1.jpg";
+import iphone2 from "../../public/images/iphone2.jpg";
+import iphonelogo from "../../public/images/iphonelog.png";
+import { getCategories } from "../../services/productService";
 
 const bannerSlides = [
   {

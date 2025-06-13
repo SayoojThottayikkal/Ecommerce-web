@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/products/ProductCard";
 import SectionHeader from "@/components/SectionHeader";
-import { getAllProducts } from "@/public/services/productService";
+import { getAllProducts } from "@/services/productService";
 
 import Button from "@/components/ui/Button";
 

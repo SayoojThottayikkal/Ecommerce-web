@@ -16,7 +16,7 @@ export const navBars = [
   },
   {
     id: 4,
-    route: "/SignUp",
+    route: "/auth",
     title: "Sign Up",
   },
 ];

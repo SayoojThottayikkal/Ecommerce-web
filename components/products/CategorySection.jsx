@@ -7,11 +7,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Category } from "../constants/index";
 
 import SectionHeader from "@/components/SectionHeader";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
+import { Category } from "@/constants";
 
 function CategorySection() {
   return (

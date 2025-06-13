@@ -13,7 +13,6 @@ const AccountMenu = dynamic(() => import("../ui/AccountMenu"), { ssr: false });
 
 export default function Navbar() {
   const [isMounted, setIsMounted] = useState(false);
-
   useEffect(() => {
     setIsMounted(true);
   }, []);

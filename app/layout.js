@@ -3,13 +3,16 @@ import "../styles/globals.css";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
+  display: "swap",
   variable: "--font-inter",
 });
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
@@ -23,8 +26,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${poppins.variable} antialiased`}>
+    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+      <body className="antialiased">
         <Navbar />
         {children}
         <Footer />
