@@ -12,6 +12,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 export default function AuthPage() {
   const [isSignup, setIsSignup] = useState(false);
@@ -24,21 +25,60 @@ export default function AuthPage() {
     e.preventDefault();
     try {
       if (isSignup) {
-        await createUserWithEmailAndPassword(auth, email, password);
-        alert("Signup successful! You can now login.");
+        const res = await createUserWithEmailAndPassword(auth, email, password);
+        console.log(res, "res");
+
         setIsSignup(true);
+        notifySignup();
       } else {
         await signInWithEmailAndPassword(auth, email, password);
         router.push("/home");
+        notify();
       }
     } catch (error) {
-      alert(error.message);
+      notifyError();
     }
   };
 
   const handleForgotPassword = () => {
     alert("Redirect to Forgot Password page");
   };
+  const notify = () =>
+    toast.success("Login Sucessfull", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
+  const notifySignup = () =>
+    toast.success("SignUp Sucessfull", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
+  const notifyError = () =>
+    toast.error("invalid username or  password", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
@@ -70,6 +110,7 @@ export default function AuthPage() {
                 placeholder="Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                required
                 className="w-full border text-black border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
               />
             )}
@@ -78,6 +119,7 @@ export default function AuthPage() {
               placeholder="Email or Phone Number"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
               className="w-full border text-black border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
             />
             <input
@@ -85,6 +127,7 @@ export default function AuthPage() {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
               className="w-full border text-black border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
             />
 
@@ -133,6 +176,7 @@ export default function AuthPage() {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
