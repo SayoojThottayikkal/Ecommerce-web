@@ -25,26 +25,25 @@ export default function AuthPage() {
     e.preventDefault();
     try {
       if (isSignup) {
-        const res = await createUserWithEmailAndPassword(auth, email, password);
-        console.log(res, "res");
-
-        setIsSignup(true);
+        await createUserWithEmailAndPassword(auth, email, password);
         notifySignup();
+        setIsSignup(false);
       } else {
         await signInWithEmailAndPassword(auth, email, password);
-        router.push("/home");
         notify();
+        router.push("/home");
       }
     } catch (error) {
-      notifyError();
+      notifyError(error.message);
     }
   };
 
   const handleForgotPassword = () => {
     alert("Redirect to Forgot Password page");
   };
+
   const notify = () =>
-    toast.success("Login Sucessfull", {
+    toast.success("Login Successful!", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -55,8 +54,9 @@ export default function AuthPage() {
       theme: "dark",
       transition: Bounce,
     });
+
   const notifySignup = () =>
-    toast.success("SignUp Sucessfull", {
+    toast.success("Account Created Successfully!", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -67,8 +67,9 @@ export default function AuthPage() {
       theme: "dark",
       transition: Bounce,
     });
-  const notifyError = () =>
-    toast.error("invalid username or  password", {
+
+  const notifyError = (errorMessage) =>
+    toast.error(errorMessage || "An error occurred", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -164,7 +165,7 @@ export default function AuthPage() {
             )}
 
             <p className="text-sm text-gray-600 text-center">
-              {isSignup ? "Already have an account?" : "Don’t have an account?"}{" "}
+              {isSignup ? "Already have an account?" : "Don't have an account?"}{" "}
               <button
                 type="button"
                 onClick={() => setIsSignup(!isSignup)}
