@@ -38,17 +38,16 @@ function ProductSection() {
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-6">
-        {products.slice(0, 10).map((item, index) => (
+        {products.slice(0, 10).map((item) => (
           <ProductCard
-            key={item.id || index}
+            key={item.id}
+            id={item.id}
             image={item.image}
             title={item.title}
             price={item.price}
             discount={item.discount}
             rating={item.rating?.rate || 4}
-            count={item.rating?.count}
-            category={item.category}
-            isNew={index % 3 === 0}
+            count={item.rating?.count || 100}
           />
         ))}
       </div>

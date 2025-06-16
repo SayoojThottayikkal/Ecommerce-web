@@ -66,13 +66,14 @@ function BestSelling() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6">
         {(showAll ? products : products.slice(0, 4)).map((item, index) => (
           <ProductCard
-            key={item.id || index}
+            key={item.id}
+            id={item.id}
             image={item.image}
             title={item.title}
             price={item.price}
             discount={item.discount}
             rating={item.rating?.rate || 4}
-            category={`${(item.price + 30).toFixed(2)}`}
+            count={item.rating?.count || 100}
           />
         ))}
       </div>

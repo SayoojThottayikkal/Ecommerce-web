@@ -44,7 +44,9 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center space-x-3">
-          <Heart color="#080808" strokeWidth={2} />
+          <Link href="/wishlist">
+            <Heart color="#080808" strokeWidth={2} className="cursor-pointer" />
+          </Link>
           <ShoppingCart color="#080808" strokeWidth={2} />
           {isMounted && isAuthenticated && <AccountMenu />}
         </div>

@@ -67,12 +67,13 @@ export default function FlashSalesSlider() {
             {products.map((item) => (
               <SwiperSlide key={item.id}>
                 <ProductCard
+                  id={item.id}
                   image={item.image}
                   title={item.title}
                   price={item.price}
                   discount={item.discount}
                   rating={item.rating?.rate || 4}
-                  category={`${(item.price + 30).toFixed(2)}`}
+                  count={item.rating?.count || 100}
                 />
               </SwiperSlide>
             ))}
