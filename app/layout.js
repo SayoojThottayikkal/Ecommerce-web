@@ -29,9 +29,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <body className="antialiased">
-        <Navbar />
-        <ProviderWrapper>{children}</ProviderWrapper>
-        <Footer />
+        <ProviderWrapper>
+          <Navbar />
+          {children}
+          <Footer />
+        </ProviderWrapper>
       </body>
     </html>
   );
