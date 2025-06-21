@@ -22,6 +22,7 @@ export default function Navbar() {
   const isAuthenticated = true;
 
   const wishlistItems = useSelector((state) => state.wishlist.wishlistItems);
+  const cartItems = useSelector((state) => state.cart.cartItems);
 
   return (
     <nav className="bg-white px-6 md:px-10 py-4 shadow flex justify-between items-center">
@@ -66,9 +67,16 @@ export default function Navbar() {
               )}
             </Link>
           )}
-
-          <ShoppingCart color="#080808" strokeWidth={2} />
-
+          {isAuthenticated && (
+            <Link href="/cart" className="relative">
+              <ShoppingCart color="#080808" strokeWidth={2} />
+              {cartItems.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartItems.length}
+                </span>
+              )}
+            </Link>
+          )}
           {isMounted && isAuthenticated && <AccountMenu />}
         </div>
       </div>

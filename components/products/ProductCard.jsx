@@ -13,6 +13,7 @@ import {
   removeFromWishlist,
   selectWishlist,
 } from "@/redux/slices/wishlistSlice";
+import Link from "next/link";
 
 const ProductCard = ({
   image,
@@ -89,13 +90,14 @@ const ProductCard = ({
           className="object-contain max-h-full"
         />
       </div>
-
-      <button
-        onClick={() => dispatch(addToCart(product))}
-        className="w-full py-2 bg-black text-white text-sm rounded opacity-0 group-hover:opacity-100 transition duration-300 mb-3"
-      >
-        Add To Cart
-      </button>
+      <Link href="/cart">
+        <button
+          onClick={() => dispatch(addToCart(product))}
+          className="w-full py-2 bg-black text-white text-sm rounded opacity-0 group-hover:opacity-100 transition duration-300 mb-3"
+        >
+          Add To Cart
+        </button>
+      </Link>
 
       <h3 className="text-sm font-semibold text-gray-800 line-clamp-1">
         {title}
