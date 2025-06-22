@@ -19,7 +19,7 @@ export default function Navbar() {
     setIsMounted(true);
   }, []);
 
-  const isAuthenticated = true;
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const wishlistItems = useSelector((state) => state.wishlist.wishlistItems);
   const cartItems = useSelector((state) => state.cart.cartItems);

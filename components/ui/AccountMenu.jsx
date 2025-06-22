@@ -11,6 +11,8 @@ import Tooltip from "@mui/material/Tooltip";
 
 import { BaggageClaim, Ban, LogOut, User } from "lucide-react";
 import { Fragment, useState } from "react";
+import { useDispatch } from "react-redux";
+import { logout } from "@/redux/slices/AuthSlice";
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -20,6 +22,10 @@ export default function AccountMenu() {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
   };
   return (
     <Fragment>
@@ -93,7 +99,7 @@ export default function AccountMenu() {
         </MenuItem>
 
         <MenuItem onClick={handleClose}>
-          <div className="flex gap-2">
+          <div onClick={handleLogout} className="flex gap-2">
             <LogOut size={20} />
             Logout
           </div>

@@ -13,6 +13,8 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "@/redux/slices/AuthSlice";
 
 export default function AuthPage() {
   const [isSignup, setIsSignup] = useState(false);
@@ -20,6 +22,11 @@ export default function AuthPage() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const router = useRouter();
+  const dispatch = useDispatch();
+  const user = {
+    email,
+    password,
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +37,7 @@ export default function AuthPage() {
         setIsSignup(false);
       } else {
         await signInWithEmailAndPassword(auth, email, password);
+        dispatch(loginSuccess(user));
         notify();
         router.push("/home");
       }
