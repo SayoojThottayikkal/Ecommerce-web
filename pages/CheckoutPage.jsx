@@ -13,12 +13,13 @@ import OrderItemCard from "@/components/checkout/OrderItemCard";
 import PaymentOption from "@/components/checkout/PaymentOption";
 import { clearCheckout } from "@/redux/slices/CheckoutSlice";
 import Image from "next/image";
-import { toast, ToastContainer } from "react-toastify";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 const CheckoutPage = () => {
   const methods = useForm();
   const dispatch = useDispatch();
   const [paymentMethod, setPaymentMethod] = useState("cod");
+  const [coupon, setCoupon] = useState("");
 
   const { checkoutItems, subtotal, total } = useSelector(
     (state) => state.checkout
@@ -36,8 +37,7 @@ const CheckoutPage = () => {
     theme="light"
     transition={Bounce}
   />;
-  const onSubmit = (data) => {
-    console.log("Order Submitted:", { ...data, paymentMethod, checkoutItems });
+  const onSubmit = () => {
     dispatch(clearCheckout());
 
     toast("Order placed!");
@@ -126,6 +126,8 @@ const CheckoutPage = () => {
         <div className="flex-row gap-2  ">
           <input
             type="text"
+            value={coupon}
+            onChange={(e) => setCoupon(e.target.value)}
             placeholder="Coupon Code"
             className="border p-2 flex-1 rounded"
           />

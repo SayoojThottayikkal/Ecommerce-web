@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { X } from "lucide-react";
 import Button from "@/components/ui/Button";
+import { setCheckoutItems } from "@/redux/slices/CheckoutSlice";
 
 const CartPage = () => {
   const dispatch = useDispatch();
@@ -128,7 +129,10 @@ const CartPage = () => {
             <span>${total}</span>
           </div>
           <Button
-            onClick={() => router.push("/checkout")}
+            onClick={() => {
+              dispatch(setCheckoutItems(cartItems));
+              router.push("/checkout");
+            }}
             className="bg-red-500 text-white w-full mt-4 py-2 rounded"
           >
             Proceed to checkout

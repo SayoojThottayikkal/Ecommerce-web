@@ -36,6 +36,10 @@ const checkoutSlice = createSlice({
       }
       checkoutSlice.caseReducers.calculateTotals(state);
     },
+    setCheckoutItems: (state, action) => {
+      state.checkoutItems = action.payload;
+      checkoutSlice.caseReducers.calculateTotals(state);
+    },
     calculateTotals: (state) => {
       let subtotal = 0;
       let totalQty = 0;
@@ -59,6 +63,7 @@ export const {
   addTocheckout,
   removeFromcheckout,
   updateQuantity,
+  setCheckoutItems,
   calculateTotals,
   clearCheckout,
 } = checkoutSlice.actions;

@@ -13,6 +13,7 @@ import RatingStars from "@/components/singleproduct/RatingStars";
 import DeliveryInfo from "@/components/singleproduct/DeliveryInfo";
 import RelatedItems from "@/components/singleproduct/RelatedItems";
 import { addTocheckout } from "@/redux/slices/CheckoutSlice";
+import Link from "next/link";
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -153,7 +154,7 @@ const ProductPage = () => {
               }
               className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded"
             >
-              Buy Now
+              <Link href={`/checkout`}>Buy Now</Link>
             </button>
 
             <button
