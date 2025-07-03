@@ -12,6 +12,7 @@ import ImageGallery from "@/components/singleproduct/ImageGallery";
 import RatingStars from "@/components/singleproduct/RatingStars";
 import DeliveryInfo from "@/components/singleproduct/DeliveryInfo";
 import RelatedItems from "@/components/singleproduct/RelatedItems";
+import { addTocheckout } from "@/redux/slices/CheckoutSlice";
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -28,7 +29,10 @@ const ProductPage = () => {
       getProductById(id).then((data) => {
         if (!data) return;
 
-        const Colors = ["#000000", "#ffffff"];
+        const Colors = {
+          black: "#000",
+          white: "#fff",
+        };
         const Sizes = ["S", "M", "L", "XL"];
 
         setProduct({
@@ -49,20 +53,13 @@ const ProductPage = () => {
 
   if (!product)
     return <div className="text-center py-20 text-gray-500">Loading...</div>;
+  console.log(product, "pro");
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col lg:flex-row gap-10 ">
         <div className="w-full lg:w-1/2">
-          <ImageGallery
-            images={
-              Array.isArray(product.images)
-                ? product.images
-                : product.image
-                ? [product.image]
-                : []
-            }
-          />
+          <ImageGallery images={product.image} />
         </div>
 
         <div className="w-full lg:w-1/2 space-y-4">
@@ -84,25 +81,19 @@ const ProductPage = () => {
           <p className="text-gray-700">{product.description}</p>
           <div className="border border-gray-400"></div>
 
-          {product.colors?.length > 0 && (
-            <div className="flex items-center gap-2">
-              <h4 className="font-medium text-black">Colours:</h4>
-              <div className="flex  gap-2 mt-1">
-                {product.colors.map((color, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setSelectedColor(color)}
-                    className={`w-6 h-6 rounded-full border-2 ${
-                      selectedColor === color
-                        ? "border-black"
-                        : "border-gray-300"
-                    }`}
-                    style={{ backgroundColor: color }}
-                  />
-                ))}
-              </div>
+          <div className="flex items-center gap-2">
+            <h4 className="font-medium text-black">Colours:</h4>
+            <div className="flex  gap-2 mt-1">
+              <button
+                style={{ background: product.colors.black }}
+                className="size-4 border-2 border-red-700 rounded-lg"
+              ></button>
+              <button
+                style={{ background: product.colors.white }}
+                className="size-4 border-2 border-red-700 rounded-lg"
+              ></button>
             </div>
-          )}
+          </div>
 
           {product.sizes?.length > 0 && (
             <div className="flex items-center gap-2">
@@ -128,7 +119,9 @@ const ProductPage = () => {
           <div className="flex items-center gap-3 mt-4">
             <div className="flex border rounded overflow-hidden h-10">
               <button
-                onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+                onClick={() =>
+                  setQuantity((prev) => (prev == 0 ? 0 : prev - 1))
+                }
                 className="px-3 border-r text-black"
               >
                 –
@@ -137,9 +130,6 @@ const ProductPage = () => {
                 type="number"
                 value={quantity}
                 min={1}
-                onChange={(e) =>
-                  setQuantity(Math.max(1, Number(e.target.value)))
-                }
                 className="w-12 text-center text-black"
               />
               <button
@@ -153,7 +143,7 @@ const ProductPage = () => {
             <button
               onClick={() =>
                 dispatch(
-                  addToCart({
+                  addTocheckout({
                     ...product,
                     selectedColor,
                     selectedSize,
