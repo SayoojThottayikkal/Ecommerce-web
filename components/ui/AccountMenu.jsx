@@ -4,32 +4,31 @@ import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-
 import IconButton from "@mui/material/IconButton";
-
 import Tooltip from "@mui/material/Tooltip";
-
 import { BaggageClaim, Ban, LogOut, User } from "lucide-react";
 import { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "@/redux/slices/AuthSlice";
+import { useRouter } from "next/navigation";
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
   const dispatch = useDispatch();
+  const router = useRouter();
+
+  const handleClick = (event) => setAnchorEl(event.currentTarget);
+  const handleClose = () => setAnchorEl(null);
+
   const handleLogout = () => {
     dispatch(logout());
+    router.push("/login");
   };
+
   return (
     <Fragment>
-      <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
+      <Box sx={{ display: "flex", alignItems: "center" }}>
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
@@ -38,6 +37,7 @@ export default function AccountMenu() {
             aria-controls={open ? "account-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
+            aria-label="Account settings"
           >
             <User />
           </IconButton>
@@ -56,12 +56,6 @@ export default function AccountMenu() {
               overflow: "visible",
               filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
               mt: 1.5,
-              "& .MuiAvatar-root": {
-                width: 32,
-                height: 32,
-                ml: -0.5,
-                mr: 1,
-              },
               "&::before": {
                 content: '""',
                 display: "block",
@@ -80,28 +74,27 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose}>
-          <div className="flex gap-2">
+        <MenuItem onClick={() => router.push("/account/profile")}>
+          <div className="flex gap-2 items-center">
             <User size={20} /> My Account
           </div>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <div className="flex gap-2">
-            <BaggageClaim size={20} />
-            My Order
-          </div>
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <div className="flex gap-2">
-            <Ban size={20} />
-            Cancellations
+
+        <MenuItem onClick={() => router.push("/account/orders")}>
+          <div className="flex gap-2 items-center">
+            <BaggageClaim size={20} /> My Orders
           </div>
         </MenuItem>
 
-        <MenuItem onClick={handleClose}>
-          <div onClick={handleLogout} className="flex gap-2">
-            <LogOut size={20} />
-            Logout
+        <MenuItem onClick={() => router.push("/account/cancellations")}>
+          <div className="flex gap-2 items-center">
+            <Ban size={20} /> Cancellations
+          </div>
+        </MenuItem>
+
+        <MenuItem onClick={handleLogout}>
+          <div className="flex gap-2 items-center text-red-500">
+            <LogOut size={20} /> Logout
           </div>
         </MenuItem>
       </Menu>

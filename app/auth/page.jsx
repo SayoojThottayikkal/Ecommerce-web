@@ -15,28 +15,35 @@ import {
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "@/redux/slices/AuthSlice";
+import { updateProfile } from "@/redux/slices/userSlice";
 
 export default function AuthPage() {
   const [isSignup, setIsSignup] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
   const router = useRouter();
   const dispatch = useDispatch();
-  const user = {
-    email,
-    password,
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const user = {
+      firstname,
+      lastname,
+      email,
+      address,
+    };
     try {
       if (isSignup) {
         await createUserWithEmailAndPassword(auth, email, password);
+        dispatch(updateProfile(user));
         notifySignup();
         setIsSignup(false);
       } else {
         await signInWithEmailAndPassword(auth, email, password);
+        dispatch(updateProfile(user));
         dispatch(loginSuccess(user));
         notify();
         router.push("/home");
@@ -114,14 +121,24 @@ export default function AuthPage() {
 
           <form className="space-y-4 w-full md:w-[90%]" onSubmit={handleSubmit}>
             {isSignup && (
-              <input
-                type="text"
-                placeholder="Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                className="w-full border text-black border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
-              />
+              <div className="flex">
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  value={firstname}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  required
+                  className="w-full border text-black border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
+                />
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  value={lastname}
+                  onChange={(e) => setLastName(e.target.value)}
+                  required
+                  className="w-1/2 border text-black border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
+                />
+              </div>
             )}
             <input
               type="email"
@@ -139,6 +156,16 @@ export default function AuthPage() {
               required
               className="w-full border text-black border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
             />
+            {isSignup && (
+              <input
+                type="text"
+                placeholder="Address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                required
+                className="w-full border text-black border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
+              />
+            )}
 
             {!isSignup ? (
               <div className="flex items-center justify-between">
