@@ -44,7 +44,7 @@ const checkoutSlice = createSlice({
       let subtotal = 0;
       let totalQty = 0;
       state.checkoutItems.forEach((item) => {
-        subtotal += item.price * item.quantity;
+        subtotal += item.price * item.quantity || item.price;
         totalQty += item.quantity;
       });
       state.subtotal = subtotal;

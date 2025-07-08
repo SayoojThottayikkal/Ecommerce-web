@@ -1,12 +1,12 @@
+import AuthProvider from "@/components/auth/AuthProvider";
 import Cancellations from "@/pages/account/Cancellations";
-import ProtectedRoute from "@/redux/ProtectedRoute";
 import React from "react";
 
 function page() {
   return (
-    <ProtectedRoute>
+    <AuthProvider>
       <Cancellations />
-    </ProtectedRoute>
+    </AuthProvider>
   );
 }
 

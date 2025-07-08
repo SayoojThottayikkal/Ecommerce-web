@@ -10,7 +10,7 @@ const OrderItemCard = ({ item }) => {
           {item.title} × {item.quantity}
         </span>
       </div>
-      <span>${item.price * item.quantity}</span>
+      <span>${item.price * item.quantity || item.price}</span>
     </div>
   );
 };

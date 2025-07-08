@@ -45,19 +45,21 @@ function CategorySection() {
           modules={[Navigation]}
           className="my-8"
         >
-          {Category.map((item) => (
-            <SwiperSlide key={item.id}>
+          {Category.map((item, index) => (
+            <SwiperSlide key={index.id}>
               <div
-                className={`border rounded-lg p-6 flex flex-col bg-white hover:bg-red-500 items-center justify-center transition hover:shadow cursor-pointer 
+                className={`border rounded-lg p-6 flex flex-col  bg-white hover:bg-red-500 items-center justify-center transition hover:shadow cursor-pointer 
                   
                 `}
               >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  size={32}
-                  className={`mb-4 ${item.image ? "text-white" : "text-black"}`}
-                />
+                <div className="filter hover:invert ">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    size={32}
+                    className={`mb-4  ${index === 3 ? "filter invert " : ""}`}
+                  />
+                </div>
                 <span className="text-sm font-medium text-black">
                   {item.title}
                 </span>

@@ -1,12 +1,13 @@
+import AuthProvider from "@/components/auth/AuthProvider";
 import AddressBook from "@/pages/account/AddressBook";
-import ProtectedRoute from "@/redux/ProtectedRoute";
+
 import React from "react";
 
 function Addres() {
   return (
-    <ProtectedRoute>
+    <AuthProvider>
       <AddressBook />
-    </ProtectedRoute>
+    </AuthProvider>
   );
 }
 
