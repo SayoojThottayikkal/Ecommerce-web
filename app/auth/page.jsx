@@ -30,11 +30,12 @@ export default function AuthPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = {
-      firstname,
-      lastname,
+      firstname: firstname,
+      lastname: lastname,
       email,
-      address,
+      address: address,
     };
+
     try {
       if (isSignup) {
         await createUserWithEmailAndPassword(auth, email, password);
@@ -52,7 +53,7 @@ export default function AuthPage() {
       notifyError(error.message);
     }
   };
-
+  console.log(user, "user");
   const handleForgotPassword = () => {
     alert("Redirect to Forgot Password page");
   };
