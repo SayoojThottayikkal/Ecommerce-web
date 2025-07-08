@@ -53,7 +53,7 @@ export default function AuthPage() {
       notifyError(error.message);
     }
   };
-  console.log(user, "user");
+
   const handleForgotPassword = () => {
     alert("Redirect to Forgot Password page");
   };
