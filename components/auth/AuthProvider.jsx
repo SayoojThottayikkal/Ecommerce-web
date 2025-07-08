@@ -7,7 +7,7 @@ const AuthProvider = ({ children }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadAuthFromStorage());
+    dispatch(loadAuthFromStorage("authUser"));
   }, []);
 
   return children;

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "@/redux/slices/userSlice";
 import { FormProvider, useForm } from "react-hook-form";
@@ -10,6 +10,7 @@ import { z } from "zod";
 import AccountSidebar from "@/components/account/AccountSidebar";
 import FormInput from "@/components/account/FormInput";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import { loginSuccess } from "@/redux/slices/AuthSlice";
 
 const schema = z
   .object({
@@ -35,26 +36,42 @@ const schema = z
 
 const EditProfile = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.profile);
+  const user = useSelector((state) => state.auth.user);
+
+  const [clicked, setClicked] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      // Reset form values when user data is available
+      methods.reset({
+        firstName: user.firstName || "",
+        lastName: user.lastName || "",
+        email: user.email || "",
+        address: user.address || "",
+      });
+    }
+  }, [user]);
 
   const methods = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      address: user.address,
+      firstName: user?.firstName,
+      lastName: user?.lastName,
+      email: user?.email,
+      address: user?.address,
     },
   });
+  console.log(methods.getValues(), "form values");
 
   const { handleSubmit, reset } = methods;
 
   const onSubmit = (data) => {
     dispatch(
-      updateProfile({
+      loginSuccess({
         firstName: data.firstName,
         lastName: data.lastName,
         address: data.address,
+        email: user.email,
       })
     );
     toast("Profile updated successfully!");
@@ -65,7 +82,10 @@ const EditProfile = () => {
       <AccountSidebar />
 
       <main className="flex-1 px-4 sm:px-6 md:px-10 py-6 md:py-8">
-        <h2 className="text-lg font-semibold text-red-500 mb-6">
+        <h2
+          className="text-lg font-semibold text-red-500 mb-6"
+          onClick={() => setClicked(!clicked)}
+        >
           Edit Your Profile
         </h2>
 

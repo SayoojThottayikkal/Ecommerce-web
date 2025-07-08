@@ -5,9 +5,7 @@ import React from "react";
 function page() {
   return (
     <>
-      <ProtectedRoute>
-        <CartPage />
-      </ProtectedRoute>
+      <CartPage />
     </>
   );
 }

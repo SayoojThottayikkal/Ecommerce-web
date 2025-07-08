@@ -12,6 +12,7 @@ const CartPage = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { cartItems, subtotal, total } = useSelector((state) => state.cart);
+  console.log(cartItems, "cart items");
 
   const handleQuantityChange = (id, newQuantity) => {
     dispatch(updateQuantity({ id, quantity: Number(newQuantity) }));
@@ -82,7 +83,7 @@ const CartPage = () => {
                     </select>
                   </td>
                   <td className="p-3 font-medium text-black">
-                    ${item.price * item.quantity}
+                    ${item.price * item.quantity || item.price}
                   </td>
                 </tr>
               ))

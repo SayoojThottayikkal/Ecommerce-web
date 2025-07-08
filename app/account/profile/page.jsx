@@ -1,13 +1,13 @@
+import AuthProvider from "@/components/auth/AuthProvider";
 import EditProfile from "@/pages/account/EditProfile";
-import ProtectedRoute from "@/redux/ProtectedRoute";
 import React from "react";
 
 function page() {
   return (
     <>
-      <ProtectedRoute>
+      <AuthProvider>
         <EditProfile />
-      </ProtectedRoute>
+      </AuthProvider>
     </>
   );
 }
