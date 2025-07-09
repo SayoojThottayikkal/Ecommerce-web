@@ -41,11 +41,11 @@ export default function Navbar() {
       </div>
 
       <div className="flex items-center space-x-4">
-        <div className="relative hidden sm:block">
+        <div className="relative hidden sm:block ">
           <Input
             type="text"
             placeholder="What are you looking for?"
-            className="pl-4 pr-10 py-1 text-sm border border-gray-200 rounded-md bg-gray-100 focus:outline-none"
+            className="pl-4 pr-10 py-1 text-sm text-gray-950  border border-gray-200 rounded-md  bg-gray-100 focus:outline-none"
           />
           <div className="absolute right-2 top-1.5">
             <Search color="#404040" strokeWidth={2} />

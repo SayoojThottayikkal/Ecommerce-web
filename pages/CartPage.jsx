@@ -108,7 +108,7 @@ const CartPage = () => {
           <input
             type="text"
             placeholder="Coupon Code"
-            className="border px-4 py-2 w-64 rounded"
+            className="border px-4 py-2 w-64 rounded text-black"
           />
           <Button className="bg-red-500 text-white px-4 py-2 rounded">
             Apply Coupon
