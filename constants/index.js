@@ -79,3 +79,76 @@ export const Arrival = [
     image: arrival2,
   },
 ];
+import {
+  Briefcase,
+  CircleDollarSign,
+  House,
+  Instagram,
+  Linkedin,
+  PiggyBank,
+  Twitter,
+} from "lucide-react";
+export const About = [
+  {
+    id: 1,
+    icon: <House />,
+    number: "10.5k",
+    label: "Sellers active in our site",
+  },
+  {
+    id: 2,
+    icon: <CircleDollarSign />,
+    number: "33k",
+    label: "Monthly Product Sale",
+  },
+  {
+    id: 3,
+    icon: <Briefcase />,
+    number: "45.5k",
+    label: "Customers active in our site",
+  },
+  {
+    id: 4,
+    icon: <PiggyBank />,
+    number: "25k",
+    label: "Annual gross sale in our site",
+  },
+];
+import image1 from "../public/images/about/Frame874.png";
+import image2 from "../public/images/about/Frame875.png";
+import image3 from "../public/images/about/Frame876.png";
+export const teamMembers = [
+  {
+    id: 1,
+    name: "Tom Cruise",
+    role: "Founder & Chairman",
+    image: image1,
+    icon: {
+      twitter: <Twitter size={15} />,
+      instagram: <Instagram size={15} />,
+      linkedin: <Linkedin size={15} />,
+    },
+  },
+  {
+    id: 2,
+    name: "Emma Watson",
+    role: "Managing Director",
+    image: image2,
+    icon: {
+      twitter: <Twitter size={15} />,
+      instagram: <Instagram size={15} />,
+      linkedin: <Linkedin size={15} />,
+    },
+  },
+  {
+    id: 3,
+    name: "Will Smith",
+    role: "Product Designer",
+    image: image3,
+    icon: {
+      twitter: <Twitter size={15} />,
+      instagram: <Instagram size={15} />,
+      linkedin: <Linkedin size={15} />,
+    },
+  },
+];
